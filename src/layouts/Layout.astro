@@ -1,0 +1,123 @@
+---
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="مركز التكوين المهني والتمهين" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <header class="bg-[#004d3f] text-white p-4">
+      <nav class="container mx-auto flex flex-col items-center">
+        <div class="text-center mb-2">
+          <p class="text-sm">الجمهورية الجزائرية الديمقراطية الشعبية</p>
+          <p class="text-sm">وزارة التكوين والتعليم المهنيين</p>
+        </div>
+        <div class="flex justify-between items-center w-full">
+          <h1 class="text-2xl font-bold">مركز التكوين المهني والتمهين تيمقاد</h1>
+          <ul class="flex gap-6">
+            <li><a href="/">الرئيسية</a></li>
+            <li><a href="/about">عن المركز</a></li>
+            <li><a href="/programs">البرامج</a></li>
+            <li><a href="/news">الأخبار</a></li>
+            <li><a href="/guide">دليل المتكون</a></li>
+            <li><a href="/useful-links">روابط مفيدة</a></li>
+            <li><a href="/contact">اتصل بنا</a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <div class="container mx-auto flex justify-center py-4">
+      <a href="https://www.takwin.dz/Offersinscription" target="_blank" rel="noopener noreferrer" class="bg-[#004d3f] hover:bg-[#00362b] text-white font-bold py-2 px-4 rounded flex items-center">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mr-2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+        </svg>
+        سجل الآن
+      </a>
+    </div>
+    <div class="news-ticker-container bg-gray-100 py-2 overflow-hidden">
+      <div class="news-ticker">
+        <span>خبر 1: هذا نص خبر تجريبي.</span>
+        <span>خبر 2: إعلان عن دورات جديدة.</span>
+        <span>خبر 3: بدء التسجيلات للدخول المهني القادم.</span>
+        <span>خبر 4: تهانينا للناجحين في الامتحانات.</span>
+        <span>خبر 5: زيارة وفد رسمي للمركز.</span>
+      </div>
+    </div>
+
+    <main>
+      <slot />
+    </main>
+    <footer class="bg-gray-100 p-4 mt-8">
+      <div class="container mx-auto text-center">
+        <p>جميع الحقوق محفوظة © {new Date().getFullYear()} مركز التكوين المهني والتمهين تيمقاد</p>
+        <p>رقم الهاتف: 033213025</p>
+        <p>البريد الإلكتروني: cfp.timgad@gmail.com</p>
+        <a href="https://www.facebook.com/Cfpadetimgad" class="mt-2 inline-block">
+          <img src="/facebook-icon.svg" alt="Facebook" width="24" height="24" class="hover:opacity-75 transition-opacity" />
+        </a>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<style>
+  html {
+    font-family: 'Cairo', sans-serif;
+  }
+  
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+  .news-ticker-container {
+      width: 100%;
+    }
+
+    .news-ticker {
+      display: flex;
+      animation: ticker 30s linear infinite;
+      white-space: nowrap;
+    }
+
+    .news-ticker span {
+      margin-right: 20px; /* Space between news items */
+      padding: 0 10px;
+      display: inline-block; /* Important for consistent spacing */
+    }
+
+    @keyframes ticker {
+      0% {
+        transform: translateX(100%);
+      }
+      100% {
+        transform: translateX(-100%);
+      }
+    }
+</style>
